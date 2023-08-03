@@ -2,20 +2,17 @@ package strcmtd
 
 import "math"
 
-// menyiapkan struct bangun datar persegi,
-// struct ini memiliki method yang beberapa diantaranya sudah terdefinisi di interface hitung
+// membuat struct Persegi
 type Persegi struct {
 	Sisi float64
 }
 
-// menyiapkan method struct persegi
-// untuk melakukan perhitungan luas
+// method untuk melakukan perhitungan luas persegi
 func (p Persegi) Luas() float64 {
 	return math.Pow(p.Sisi, 2)
 }
 
-// menyiapkan method struct persegi
-// untuk melakukan perhitungan keliling
+// method untuk melakukan perhitungan keliling persegi
 func (p Persegi) Keliling() float64 {
 	return p.Sisi * 4
 }

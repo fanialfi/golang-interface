@@ -1,8 +1,6 @@
 package intf
 
-// mempersiapkan interface dan mendefinisikan method,
-// pendefinisian interface menggunakan keyword type dan interface
-// variabel yang menggunakan tipe data interface hitung, ketika diisi menggunakan struct, minimal harus mempunyai method yang terdefinisikan di interface hitung
+// membuat interface exported, yang berisi 2 method untuk melakukan perhitungan bangun datar
 type Hitung interface {
 	Luas() float64
 	Keliling() float64
