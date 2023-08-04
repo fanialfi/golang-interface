@@ -14,6 +14,11 @@ func main() {
 	// implementasi lingkaran
 	bangunDatar = strcmtd.Lingkaran{Diameter: 14.0}
 	fmt.Println("=====> lingkaran")
+
+	// karena method Jarijari() tidak tersedia di interface intf.Hitung, maka untuk mengakses-nya harus di-casting terlebih dahulu ke tipe variabel asli nya (pada kasus ini bertpe strcmtd.Lingkaran)
+	// setelah itu method nya baru bisa di akses
+	// untuk melakukan casting interface yaitu dengan menuliskan nama tipe tujuan dalam tanda kurung
+	// ditempatkan setelah nama interface dengan menggunakan notasi titik (seperti cara megakses field pada sebuah struct, hanya saja ada tanda kurungnya)
 	fmt.Printf("\n\tjari-jari\t: %.3f\n", bangunDatar.(strcmtd.Lingkaran).Jarijari())
 	fmt.Printf("\tluas\t\t: %.3f\n", bangunDatar.Luas())
 	fmt.Printf("\tkeliling\t: %.3f\n\n", bangunDatar.Keliling())
