@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"reflect"
 	"strings"
 )
 
@@ -43,74 +42,89 @@ import (
 // }
 
 // menggunakan interface kosong (any)
+// func main() {
+// 	// jika sebuah interface ditambahkan kurung kurawal di belakangnya
+// 	// maka kegunaannya berpindah dari keyword untuk pembuatan interface menjadi tipe data
+// 	var secret interface{} // default value nya adalah nil
+
+// 	fmt.Println("tipe data : ", reflect.TypeOf(secret), " value : ", secret)
+// 	secret = "fani alfi"
+
+// 	fmt.Println()
+// 	fmt.Println("tipe data : ", reflect.TypeOf(secret), " value : ", secret)
+
+// 	fmt.Println()
+// 	secret = []string{"fani", "alfi"}
+// 	fmt.Println("tipe data : ", reflect.TypeOf(secret), " value : ", secret)
+
+// 	fmt.Println()
+// 	secret = 3.14
+// 	fmt.Println("tipe data : ", reflect.TypeOf(secret), " value : ", secret)
+
+// 	fmt.Println()
+// 	var data = map[string]interface{}{
+// 		"nama": "fani alfirdaus",
+// 		"alamat": map[string]string{
+// 			"negara":    "indonesia",
+// 			"provinsi":  "jawa tengah",
+// 			"kabupaten": "karanganyar",
+// 			"kecamatan": "matesih",
+// 			"desa":      "koripan",
+// 			"dusun":     "dukuh",
+// 		},
+// 		"hobi": []string{"membaca", "ngoding", "belajar"},
+// 		"umur": 17,
+// 	}
+
+// 	for key, value := range data {
+// 		fmt.Printf("key-%s\t: %v\n", key, value)
+// 	}
+
+// 	// alias menggunakan interface{}
+// 	fmt.Printf("\nalias menggunakan interface\n")
+// 	data = map[string]any{
+// 		"name": "fanialfi",
+// 		"umur": 17,
+// 		"alamat": map[string]string{
+// 			"kab": "karanganyar",
+// 			"kec": "matesih",
+// 			"kel": "koripan",
+// 			"ds":  "dukuh",
+// 		},
+// 		"fruits": []string{"apel", "mangga", "pisang", "anggur"},
+// 	}
+
+// 	for key, value := range data {
+// 		fmt.Printf("key-%s\t: %v\n", key, value)
+
+// 		if key == "alamat" {
+// 			// fmt.Println("tipe value alamat ", reflect.TypeOf(value)) // digunakan untuk mengecek tipe data value
+
+// 			// value.(map[string]string) digunakan untuk melakukan casting tipe interface{} ( interface kosong) ke tipe data asli-nya
+// 			for key, value := range value.(map[string]string) {
+// 				fmt.Printf("%s\t: %s\n", key, value)
+// 			}
+// 		} else if key == "fruits" {
+// 			// value dari value data di casting lagi dari interface{} menjadi bentuk aslinya ([]string)
+// 			// strings.Join() digunakan untuk menggabungkan slice yang tipe data,nya string
+// 			// dimana parameter pertama adalah sebuah element bertipe slice string yang akan dijoin
+// 			// dan parameter kedua adalah penghubungnya
+// 			fmt.Println(strings.Join(value.([]string), ", "), "adalah buah kesauaan saya")
+// 		}
+// 	}
+// }
+
+// casting interface kosong ke variabel pointer
 func main() {
-	// jika sebuah interface ditambahkan kurung kurawal di belakangnya
-	// maka kegunaannya berpindah dari keyword untuk pembuatan interface menjadi tipe data
-	var secret interface{} // default value nya adalah nil
+	type person []string
 
-	fmt.Println("tipe data : ", reflect.TypeOf(secret), " value : ", secret)
-	secret = "fani alfi"
+	// variabel data dideklarasikan menggunakan interface kosong
+	// diisi dengan slice string pointer
+	var data interface{} = &person{"fani", "alfi"}
 
-	fmt.Println()
-	fmt.Println("tipe data : ", reflect.TypeOf(secret), " value : ", secret)
-
-	fmt.Println()
-	secret = []string{"fani", "alfi"}
-	fmt.Println("tipe data : ", reflect.TypeOf(secret), " value : ", secret)
-
-	fmt.Println()
-	secret = 3.14
-	fmt.Println("tipe data : ", reflect.TypeOf(secret), " value : ", secret)
-
-	fmt.Println()
-	var data = map[string]interface{}{
-		"nama": "fani alfirdaus",
-		"alamat": map[string]string{
-			"negara":    "indonesia",
-			"provinsi":  "jawa tengah",
-			"kabupaten": "karanganyar",
-			"kecamatan": "matesih",
-			"desa":      "koripan",
-			"dusun":     "dukuh",
-		},
-		"hobi": []string{"membaca", "ngoding", "belajar"},
-		"umur": 17,
-	}
-
-	for key, value := range data {
-		fmt.Printf("key-%s\t: %v\n", key, value)
-	}
-
-	// alias menggunakan interface{}
-	fmt.Printf("\nalias menggunakan interface\n")
-	data = map[string]any{
-		"name": "fanialfi",
-		"umur": 17,
-		"alamat": map[string]string{
-			"kab": "karanganyar",
-			"kec": "matesih",
-			"kel": "koripan",
-			"ds":  "dukuh",
-		},
-		"fruits": []string{"apel", "mangga", "pisang", "anggur"},
-	}
-
-	for key, value := range data {
-		fmt.Printf("key-%s\t: %v\n", key, value)
-
-		if key == "alamat" {
-			// fmt.Println("tipe value alamat ", reflect.TypeOf(value)) // digunakan untuk mengecek tipe data value
-
-			// value.(map[string]string) digunakan untuk melakukan casting tipe interface{} ( interface kosong) ke tipe data asli-nya
-			for key, value := range value.(map[string]string) {
-				fmt.Printf("%s\t: %s\n", key, value)
-			}
-		} else if key == "fruits" {
-			// value dari value data di casting lagi dari interface{} menjadi bentuk aslinya ([]string)
-			// strings.Join() digunakan untuk menggabungkan slice yang tipe data,nya string
-			// dimana parameter pertama adalah sebuah element bertipe slice string yang akan dijoin
-			// dan parameter kedua adalah penghubungnya
-			fmt.Println(strings.Join(value.([]string), ", "), "adalah buah kesauaan saya")
-		}
-	}
+	// cara casting interface any ke slice string pointer sama ketika casting dari interface any ke bentuk aslinya
+	// yang membedakan adalah dengan menambahkan tanda asterisk (*) didepan tipe data aslinya
+	// data.(*person)
+	nama := data.(*person)
+	fmt.Println("nama saya adalah", strings.Join(*nama, ""))
 }
