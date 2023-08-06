@@ -1,9 +1,6 @@
 package main
 
-import (
-	"fmt"
-	"strings"
-)
+import "fmt"
 
 // func main() {
 // 	// inisialisasi variabel dengan menggunakan tipe data Hitung interface
@@ -114,17 +111,44 @@ import (
 // 	}
 // }
 
-// casting interface kosong ke variabel pointer
+// {
+// 	// casting interface kosong ke variabel pointer
+// func main() {
+// 	type person []string
+
+// 	// variabel data dideklarasikan menggunakan interface kosong
+// 	// diisi dengan slice string pointer
+// 	var data interface{} = &person{"fani", "alfi"}
+
+// 	// cara casting interface any ke slice string pointer sama ketika casting dari interface any ke bentuk aslinya
+// 	// yang membedakan adalah dengan menambahkan tanda asterisk (*) didepan tipe data aslinya
+// 	// data.(*person)
+// 	nama := data.(*person)
+// 	fmt.Println("nama saya adalah", strings.Join(*nama, ""))
+// 	}
+// }
+
+// kombinasi slice map dan interface{}
 func main() {
-	type person []string
+	var persons = []map[string]any{
+		{"name": "fani alfi", "umur": 17},
+		{"name": "wick", "umur": 18},
+		{"name": "stevan", "umur": 19},
+	}
 
-	// variabel data dideklarasikan menggunakan interface kosong
-	// diisi dengan slice string pointer
-	var data interface{} = &person{"fani", "alfi"}
+	for _, person := range persons {
+		fmt.Println(person["name"], "age is", person["umur"])
+	}
 
-	// cara casting interface any ke slice string pointer sama ketika casting dari interface any ke bentuk aslinya
-	// yang membedakan adalah dengan menambahkan tanda asterisk (*) didepan tipe data aslinya
-	// data.(*person)
-	nama := data.(*person)
-	fmt.Println("nama saya adalah", strings.Join(*nama, ""))
+	fmt.Printf("\nmemanfaatkan slice dan interface{} untuk membuat data array yang isinya bisa apa saja\n\n")
+
+	var fruits = []any{
+		map[string]any{"name": "strawberry", "total": 10},
+		[]string{"manggo", "pineapple", "papaya"},
+		"orange",
+	}
+
+	for _, fruit := range fruits {
+		fmt.Println(fruit)
+	}
 }

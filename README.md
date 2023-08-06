@@ -8,8 +8,7 @@ Interface merupakan sebuah tipe data, zero value dari sebuah interface adalah `n
 
 untuk menerapkan sebuah interface, yang perlu dilakukan terlebih dahulu adalah membuatnya, keyword `type` dan `interface` digunakan untuk membuat sebuah interface.
 
-<details>
-  <summary>contoh membuat interface</summary>
+contoh membuat interface
 
 ```go
 type hitung interface {
@@ -17,14 +16,12 @@ type hitung interface {
   keliling() float64
 }
 ```
-</details><br>
 
 pada conoth kode di atas, interface `hitung` memiliki 2 buah method, `lus()` dan `keliling()`. 
 interface ini nantinya digunakan sebagai tipe data dari sebuah variabel, dimana variabel tersebut akan berisi data struct yang akan dibuat.
 Dimana struct yang akan dibuat berisi method minimal yang tercantum saat pendeklarasian interface
 
-<details>
-  <summary>mempersiapkan struct dan method bangun datar</summary>
+mempersiapkan struct dan method bangun datar
 
 ```go
 
@@ -58,12 +55,10 @@ func (p persegi) keliling() float64 {
   return p.sisi * 4
 }
 ```
-</details><br>
 
 perbedaan antara struct persegi dan lingkaran di atas terletak pada method `jarijari()`, struct persegi tidak memiliki method tersebut, namun variabel hasil dari 2 struct ini akan tetap bisa ditampung oleh variabel yang bertipe data `interface hitung`.
 
-<details>
-  <summary>implementasi perhitungan di <code>func main</code></summary>
+implementasi perhitungan di <code>func main</code>
 
 ```go
 func main() {
@@ -81,4 +76,3 @@ func main() {
   fmt.Println("jari jari : ", bangunDatar.(lingkaran).jarijari())
 }
 ```
-</details>
